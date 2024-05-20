@@ -1,10 +1,6 @@
 -- debug.lua
 --
 -- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
 
 return {
   -- NOTE: Yes, you can install new plugins here!
@@ -13,6 +9,9 @@ return {
   dependencies = {
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
+
+    -- Adds virtual text to debugger
+    'theHamsta/nvim-dap-virtual-text',
 
     -- Required dependency for nvim-dap-ui
     'nvim-neotest/nvim-nio',
@@ -27,7 +26,7 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
-
+    require('nvim-dap-virtual-text').setup {}
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
@@ -42,18 +41,25 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'codelldb',
+        'debugpy',
       },
     }
+    -- Eval var under cursor
+    vim.keymap.set('n', '<space>?', function()
+      require('dapui').eval(nil, { enter = true })
+    end)
 
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
+    vim.keymap.set('n', '<leader>dr', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', '<leader>di', dap.step_into, { desc = 'Debug: Step Into' })
+    vim.keymap.set('n', '<leader>do', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', '<leader>dso', dap.step_out, { desc = 'Debug: Step Out' })
     vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
     vim.keymap.set('n', '<leader>B', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
+    vim.keymap.set('n', '<leader>dc', dap.close, { desc = '[D]ebug: [C]lose' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|

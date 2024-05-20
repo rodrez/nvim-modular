@@ -7,3 +7,5 @@ return {
     opts = {},
   },
 }
+
+require("ibl").setup()

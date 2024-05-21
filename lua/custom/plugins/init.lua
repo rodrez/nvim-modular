@@ -3,4 +3,3 @@
 --
 -- See the kickstart.nvim README for more information
 return { 'theprimeagen/vim-be-good' }
--- { "tpope/vim-fugitive" },

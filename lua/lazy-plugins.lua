@@ -29,7 +29,9 @@ require('lazy').setup({
   { 'theprimeagen/vim-be-good' },
   -- Git In vim
   { 'tpope/vim-fugitive' },
-  -- "Zen mode"
+  -- Zen mode
+  { 'folke/zen-mode.nvim' },
+  -- See undos as a tre
   { 'mbbill/undotree' },
 
   -- modular approach: using `require 'path/name'` will
@@ -55,6 +57,9 @@ require('lazy').setup({
 
   require 'kickstart/plugins/treesitter',
 
+  -- require 'kickstart/plugins/harpoon',
+  -- require 'kickstart/plugins/harpoon',
+
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -68,14 +73,13 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom/plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

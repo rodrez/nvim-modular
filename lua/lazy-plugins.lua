@@ -31,6 +31,7 @@ require('lazy').setup({
   { 'tpope/vim-fugitive' },
   -- "Zen mode"
   { 'mbbill/undotree' },
+
   -- modular approach: using `require 'path/name'` will
   -- include a plugin definition from file lua/path/name.lua
 

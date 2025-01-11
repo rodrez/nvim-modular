@@ -21,7 +21,6 @@ require('lazy').setup({
   --
   --  This is equivalent to:
   --    require('Comment').setup({})
-
   -- "gc" to comment visual regions/lines
 
   -- "Vim be good"
@@ -38,9 +37,10 @@ require('lazy').setup({
 
   require 'kickstart/plugins/gitsigns',
 
-  -- require 'kickstart/plugins/which-key',
+  require 'kickstart/plugins/which-key',
 
   require 'kickstart/plugins/telescope',
+  -- require 'kickstart/plugins/blm',
 
   require 'kickstart/plugins/lspconfig',
 

@@ -59,7 +59,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
 -- Replace all word under cursor
-vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
 
 -- Move between quickfix and location list

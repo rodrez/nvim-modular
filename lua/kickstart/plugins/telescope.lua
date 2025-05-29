@@ -66,12 +66,22 @@ return {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          tmuxscope = {
+            search_paths = {
+              '~/projects',
+              '~/work',
+              '~/dev',
+              '~/.config',
+              '~/Documents',
+            },
+          },
         },
       }
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'tmuxscope')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -85,6 +95,15 @@ return {
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+      -- Tmux session management keymaps
+      vim.keymap.set('n', '<leader>ts', function()
+        require('telescope').extensions.tmuxscope.sessions()
+      end, { desc = '[T]mux [S]essions' })
+      
+      vim.keymap.set('n', '<leader>tc', function()
+        require('telescope').extensions.tmuxscope.new_session()
+      end, { desc = '[T]mux [C]reate New Session' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -102,7 +121,7 @@ return {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
         }
-      end, { desc = '[L]ive [G]grep in Open Files' })
+      end, { desc = '[L]ive [G]rep in Open Files' })
 
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>sn', function()

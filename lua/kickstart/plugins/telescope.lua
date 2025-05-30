@@ -68,11 +68,11 @@ return {
           },
           tmuxscope = {
             search_paths = {
+              '~/code',
               '~/projects',
               '~/work',
               '~/dev',
               '~/.config',
-              '~/Documents',
             },
           },
         },
@@ -104,6 +104,10 @@ return {
       vim.keymap.set('n', '<leader>tc', function()
         require('telescope').extensions.tmuxscope.new_session()
       end, { desc = '[T]mux [C]reate New Session' })
+
+      vim.keymap.set('n', '<leader>tC', function()
+        require('telescope').extensions.tmuxscope.create_dir_session()
+      end, { desc = '[T]mux [C]reate New Directory & Session' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()

@@ -7,10 +7,10 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        javascript = { 'biomejs' },
-        typescript = { 'biomejs' },
-        javascriptreact = { 'biomejs' },
-        typescriptreact = { 'biomejs' },
+        javascript = { 'eslint_d', 'biomejs' },
+        typescript = { 'eslint_d', 'biomejs' },
+        javascriptreact = { 'eslint_d', 'biomejs' },
+        typescriptreact = { 'eslint_d', 'biomejs' },
         python = { 'ruff' },
       }
 

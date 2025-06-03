@@ -1,22 +1,42 @@
 return {
-  {
     'folke/trouble.nvim',
-    config = function()
-      require('trouble').setup {
-        icons = false,
+    opts= {},
+    cmd = "Trouble",
+    keys = {
+      {
+        '<leader>tt',
+        '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+        desc = "[T]rouble diagnostics current buffer "
+      },
+      {
+        '<leader>tT',
+        '<cmd>Trouble diagnostics toggle<cr>',
+        desc = "[T]rouble diagnostics"
+      },
+      {
+        '[t',
+        '<cmd>Trouble diagnostics next<cr>',
+        desc = "[T]rouble diagnostics next"
+      },
+      {
+        ']t',
+        '<cmd>Trouble diagnostics prev<cr>',
+        desc = "[T]rouble diagnostics previous"
       }
-
-      vim.keymap.set('n', '<leader>tt', function()
-        require('trouble').toggle()
-      end)
-
-      vim.keymap.set('n', '[t', function()
-        require('trouble').next { skip_groups = true, jump = true }
-      end)
-
-      vim.keymap.set('n', ']t', function()
-        require('trouble').previous { skip_groups = true, jump = true }
-      end)
-    end,
-  },
-}
+    },
+    modes = {
+      preview_float = {
+        mode = "diagnostics",
+        preview = {
+          type = "float",
+          relative = "editor",
+          border = "rounded",
+          title = "Preview",
+          title_pos = "center",
+          position = { 0, -2 },
+          size = { width = 0.3, height = 0.3 },
+          zindex = 200,
+        },
+      },
+    }
+  }

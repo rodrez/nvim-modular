@@ -28,7 +28,7 @@ return {
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -69,9 +69,6 @@ return {
           tmuxscope = {
             search_paths = {
               '~/code',
-              '~/projects',
-              '~/work',
-              '~/dev',
               '~/.config',
             },
           },
@@ -100,7 +97,7 @@ return {
       vim.keymap.set('n', '<leader>ts', function()
         require('telescope').extensions.tmuxscope.sessions()
       end, { desc = '[T]mux [S]essions' })
-      
+
       vim.keymap.set('n', '<leader>tc', function()
         require('telescope').extensions.tmuxscope.new_session()
       end, { desc = '[T]mux [C]reate New Session' })

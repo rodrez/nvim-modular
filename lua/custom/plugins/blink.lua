@@ -1,7 +1,7 @@
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
-  dependencies = { 'rafamadriz/friendly-snippets' },
+  dependencies = { 'rafamadriz/friendly-snippets', 'saghen/blink.compat' },
   -- use a release tag to download pre-built binaries
   version = '1.*',
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -47,6 +47,13 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
+      providers = {
+        supermaven = {
+          name = 'supermaven',
+          module = 'blink.compat.source',
+          score_offset = 3,
+        },
+      },
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
 

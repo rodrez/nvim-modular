@@ -73,4 +73,7 @@ vim.keymap.set('x', '<leader>p', [["_dP]])
 
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
+
+-- Zen mode
+vim.keymap.set('n', '<leader>z', '<cmd>ZenMode<CR>')
 -- vim: ts=2 sts=2 sw=2 et

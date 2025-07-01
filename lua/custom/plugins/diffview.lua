@@ -1,8 +1,8 @@
 return {
   'sindrets/diffview.nvim',
-  config = {
-    vim.keymap.set('n', '<leader>dv', ':DiffviewOpen<CR>', { desc = '[D]iff[V]iew Open' }),
-    vim.keymap.set('n', '<leader>dx', ':DiffviewClose<CR>', { desc = '[D]iffview [X] close' }),
-    vim.keymap.set('n', '<leader>df', ':DiffviewRefresh<CR>', { desc = '[D]iffview re[F]resh' }),
-  },
+  keys = {
+      { '<leader>dv', '<cmd>DiffviewOpen<CR>', desc = '[D]iff[V]iew Open' },
+      { '<leader>dx', '<cmd>DiffviewClose<CR>', desc = '[D]iffview [X] close' },
+      { '<leader>df', '<cmd>DiffviewFileHistory %<CR>', desc = '[D]iffview [F]ile history' },
+  }
 }

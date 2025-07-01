@@ -1,5 +1,5 @@
 return {
-  'rodrez/tmuxscope',
+  'maskdotdev/tmuxscope',
   dependencies = {
     'nvim-telescope/telescope.nvim',
   },

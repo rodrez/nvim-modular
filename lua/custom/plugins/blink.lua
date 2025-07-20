@@ -1,7 +1,8 @@
 return {
   'saghen/blink.cmp',
+  event = 'VeryLazy',
   -- optional: provides snippets for the snippet source
-  dependencies = { 'rafamadriz/friendly-snippets', 'saghen/blink.compat' },
+  dependencies = { { 'rafamadriz/friendly-snippets', event = 'VeryLazy' }, { 'saghen/blink.compat', event = 'VeryLazy' } },
   -- use a release tag to download pre-built binaries
   version = '1.*',
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -43,7 +44,6 @@ return {
         enabled = true,
       } },
     },
-
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`

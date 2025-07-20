@@ -1,5 +1,6 @@
 return {
   'maskdotdev/tmuxscope',
+  event = 'VeryLazy',
   dependencies = {
     'nvim-telescope/telescope.nvim',
   },

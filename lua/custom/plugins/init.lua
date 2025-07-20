@@ -3,9 +3,10 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  { 'theprimeagen/vim-be-good' },
+  { 'theprimeagen/vim-be-good', event = 'VeryLazy' },
   {
     'davidmh/mdx.nvim',
+    event = 'VeryLazy',
     config = true,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },

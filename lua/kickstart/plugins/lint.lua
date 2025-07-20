@@ -7,10 +7,10 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        javascript = { 'eslint_d', 'biomejs' },
-        typescript = { 'eslint_d', 'biomejs' },
-        javascriptreact = { 'eslint_d', 'biomejs' },
-        typescriptreact = { 'eslint_d', 'biomejs' },
+        javascript = { 'biomejs', 'eslint_d' },
+        typescript = { 'biomejs', 'eslint_d' },
+        javascriptreact = { 'biomejs', 'eslint_d' },
+        typescriptreact = { 'biomejs', 'eslint_d' },
         python = { 'ruff' },
       }
 
@@ -53,6 +53,7 @@ return {
         group = lint_augroup,
         callback = function()
           require('lint').try_lint()
+          require('lint').try_lint 'cspell'
         end,
       })
     end,

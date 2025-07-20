@@ -137,8 +137,8 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        ts_ls = {},
-        angularls = {},
+        -- NOTE: I'm using typescript-tools.nvim for typescript
+        -- ts_ls = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -154,6 +154,8 @@ return {
           },
         },
         biome = {},
+        cssmodules_ls = {},
+        tailwindcss = {},
       }
 
       -- Ensure the servers and tools above are installed

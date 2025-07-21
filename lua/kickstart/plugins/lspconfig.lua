@@ -11,9 +11,17 @@ return {
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', event = 'VeryLazy', opts = {} },
+      { 'j-hui/fidget.nvim',       event = 'VeryLazy', opts = {} },
     },
     config = function()
+      -- Configure cspell_ls for Neovim 0.11+
+      vim.lsp.config('cspell_ls', {
+        cmd = { 'cspell-lsp', '--stdio' },
+        filetypes = { 'text', 'markdown', 'latex', 'tex', 'html', 'css', 'javascript', 'typescript', 'python', 'lua' },
+        root_dir = vim.fs.root(0, { '.git', 'package.json', 'pyproject.toml', 'Cargo.toml' }),
+        single_file_support = true,
+      })
+
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -139,7 +147,7 @@ return {
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- NOTE: I'm using typescript-tools.nvim for typescript
-        -- ts_ls = {},
+        ts_ls = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -156,8 +164,12 @@ return {
         },
         biome = {},
         tailwindcss = {},
-        cspell_ls = {},
-        eslint_d = {},
+        cspell_ls = {
+          -- Configure cspell_ls for Neovim 0.11+
+          init_options = {
+            -- Add any cspell-specific configuration here if needed
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -172,7 +184,7 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'basedpyright', -- Used to format Lua code
+        'basedpyright',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

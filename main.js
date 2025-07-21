@@ -10,6 +10,3 @@ const subtract = (a, b) => {
     throw new Error('Both arguments must be numbers');
   }
 }
-
-
-

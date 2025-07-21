@@ -7,7 +7,7 @@ return {
     {
       "<leader>sG",
       function()
-        local grug = require("gruv-far")
+        local grug = require("grug-far")
         local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
         grug.open({
           transient = true,

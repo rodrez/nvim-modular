@@ -68,8 +68,9 @@ return {
           },
           tmuxscope = {
             search_paths = {
-              {path='~/code', depth = 3},
-              {path='~/.config', depth = 4},
+              {path='~/Documents/personal/', depth = 3},
+              {path='~/Documents/work//', depth = 3},
+              {path='~/.config', depth = 3},
             },
           },
         },

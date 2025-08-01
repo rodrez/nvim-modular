@@ -52,6 +52,8 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 
+vim.opt.swapfile = false
+
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
@@ -63,5 +65,8 @@ vim.opt.scrolloff = 10
 
 -- Nerd fonts
 vim.g.have_nerd_font = true
+
+-- Enable syntax highlighting
+vim.cmd 'syntax enable'
 
 -- vim: ts=2 sts=2 sw=2 et

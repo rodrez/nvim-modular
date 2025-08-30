@@ -11,7 +11,7 @@ return {
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       event = 'VeryLazy', opts = {} },
+      { 'j-hui/fidget.nvim', event = 'VeryLazy', opts = {} },
     },
     config = function()
       -- Configure cspell_ls for Neovim 0.11+
@@ -147,6 +147,10 @@ return {
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- NOTE: I'm using typescript-tools.nvim for typescript
+        basedpyright = {
+          autoImportCompletion = true,
+          python = { analysis = { autoSearchPaths = true, diagnosticMode = 'openFilesOnly', useLibraryCodeForTypes = true, typeCheckingMode = 'off' } },
+        },
         ts_ls = {},
         lua_ls = {
           -- cmd = {...},

@@ -1,0 +1,108 @@
+[project]
+name = "nvim-jupyter-inline"
+version = "0.1.0"
+description = "Jupyter inline output plugin for Neovim"
+readme = "JUPYTER_PLUGIN_README.md"
+requires-python = ">=3.8"
+authors = [
+    {name = "Neovim User", email = "user@example.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Editors",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "jupyter-client>=7.0.0",
+    "pyzmq>=22.0.0",
+    "ipykernel>=6.0.0",
+]
+
+[project.optional-dependencies]
+plotting = [
+    "matplotlib>=3.5.0",
+    "numpy>=1.20.0",
+]
+image-viewer = [
+    "pillow>=8.0.0",
+]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.0.0",
+    "isort>=5.10.0",
+    "flake8>=4.0.0",
+]
+all = [
+    "nvim-jupyter-inline[plotting,image-viewer,dev]"
+]
+
+[project.urls]
+Homepage = "https://github.com/user/nvim-jupyter-inline"
+Repository = "https://github.com/user/nvim-jupyter-inline"
+Documentation = "https://github.com/user/nvim-jupyter-inline/blob/main/JUPYTER_PLUGIN_README.md"
+
+[project.scripts]
+jupyter-bridge = "scripts.jupyter_bridge:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["scripts"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["scripts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["scripts"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
